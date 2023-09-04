@@ -261,16 +261,17 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
     }
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        Principal principal = new Principal();
-        principal.setVisible(true);
-        principal.setLocationRelativeTo(null);
+        Principal p = new Principal();
+        p.setVisible(true);
+        p.setLocationRelativeTo(null);
+        
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnModificarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAlumnoActionPerformed
         
          //obtengo los valores de los jtextfield y los guardo en variables...
-         String id = txtID.getText();
+        String id = txtID.getText();
         String dni = txtDni.getText();
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
@@ -301,6 +302,7 @@ public class Alumno extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error " + e);
         }
+        
 
     }//GEN-LAST:event_btnModificarAlumnoActionPerformed
 

@@ -31,7 +31,8 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         mostrarDatosAlumno();
         mostrarDatosMateria();
-        btnModificar.setEnabled(false);
+        btnModificarAlumno.setVisible(false);
+        btnModificarMateria.setVisible(false);
     }
 
     /**
@@ -46,8 +47,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnRegistrarAlumno = new javax.swing.JButton();
         btnRegistrarMate = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
+        btnInscripcion = new javax.swing.JButton();
+        btnModificarAlumno = new javax.swing.JButton();
+        btnModificarMateria = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -86,23 +88,36 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel1.add(btnRegistrarMate, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 157, -1));
 
-        jButton3.setText("Registrar Inscripción");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnInscripcion.setText("Registrar Inscripción");
+        btnInscripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnInscripcionActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 157, -1));
+        jPanel1.add(btnInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 157, -1));
 
-        btnModificar.setText("Modificar Alumno");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+        btnModificarAlumno.setText("Modificar Alumno");
+        btnModificarAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
+                btnModificarAlumnoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 140, -1));
+        jPanel1.add(btnModificarAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 140, -1));
+
+        btnModificarMateria.setText("Modificar Materia");
+        btnModificarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarMateriaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 140, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/OIP.jpg"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 280, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 67, 300, 530));
@@ -149,6 +164,11 @@ public class Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaMateria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMateriaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaMateria);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 200));
@@ -159,6 +179,11 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 496, 240));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Walls_iPad_Pro_9.7_015.jpg"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 6, 850, 610));
 
         pack();
@@ -176,24 +201,24 @@ public class Principal extends javax.swing.JFrame {
         Materia mat = new Materia();
         mat.setVisible(true);
         mat.setLocationRelativeTo(null);
-        this.dispose();
+        
     }//GEN-LAST:event_btnRegistrarMateActionPerformed
 
     //Metodo para que al seleccionar una fila de la tabla se desabiliten los botones Registrar alumno
     // y Registrar materia y se habilite el boton Modificar
     private void tablaAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAlumnoMouseClicked
         btnRegistrarAlumno.setEnabled(false);
+        btnInscripcion.setEnabled(false);
+       
         btnRegistrarMate.setEnabled(false);
-        btnModificar.setEnabled(true);
+        btnModificarMateria.setVisible(false);
+        btnModificarAlumno.setVisible(true);
     }//GEN-LAST:event_tablaAlumnoMouseClicked
 
     //Metodo para modificar algun dato de la BD
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+    private void btnModificarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAlumnoActionPerformed
        try{
            
-//        //desactivo los botones Registrar alumno y Registrar materia
-//        btnRegistrarAlumno.setEnabled(false);
-//        btnRegistrarMate.setEnabled(false);
 
         //Guardo en una variable el numero de fila seleccionada
         int fila = tablaAlumno.getSelectedRow();
@@ -226,18 +251,72 @@ public class Principal extends javax.swing.JFrame {
        }
 
 
-    }//GEN-LAST:event_btnModificarActionPerformed
+    }//GEN-LAST:event_btnModificarAlumnoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscripcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnInscripcionActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        btnModificarAlumno.setVisible(false);
+        btnModificarMateria.setVisible(false);
+        btnRegistrarAlumno.setEnabled(true);
+        btnRegistrarMate.setEnabled(true);
+        btnInscripcion.setEnabled(true);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void tablaMateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMateriaMouseClicked
+         btnRegistrarAlumno.setEnabled(false);
+        btnRegistrarMate.setEnabled(false);
+        btnInscripcion.setEnabled(false);
+        btnModificarAlumno.setVisible(false);
+        btnModificarMateria.setVisible(true);
+        
+    }//GEN-LAST:event_tablaMateriaMouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+          btnModificarAlumno.setVisible(false);
+        btnModificarMateria.setVisible(false);
+        btnRegistrarAlumno.setEnabled(true);
+        btnRegistrarMate.setEnabled(true);
+        btnInscripcion.setEnabled(true);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void btnModificarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarMateriaActionPerformed
+        
+        int fila = tablaMateria.getSelectedRow();
+        
+        try{
+        String id = (String)tablaMateria.getValueAt(fila, 0);
+        String nombre = (String) tablaMateria.getValueAt(fila, 1);
+        String anio = (String) tablaMateria.getValueAt(fila, 2);
+        String estado = (String) tablaMateria.getValueAt(fila, 3);
+        
+        Materia mate = new Materia();
+        mate.setVisible(true);
+        mate.setLocationRelativeTo(null);
+        
+        mate.btnRegistrar.setVisible(false);
+        mate.btnModificar.setVisible(true);
+        
+        mate.txtID.setText(id);
+        mate.txtNombre.setText(nombre);
+        mate.txtAño.setText(anio);
+        mate.txtEstado.setText(estado);
+        
+        }catch(Exception e){
+            System.out.println(" error" +e);
+        }
+        
+    }//GEN-LAST:event_btnModificarMateriaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnInscripcion;
+    public static javax.swing.JButton btnModificarAlumno;
+    private javax.swing.JButton btnModificarMateria;
     private javax.swing.JButton btnRegistrarAlumno;
     private javax.swing.JButton btnRegistrarMate;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -247,11 +326,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tablaAlumno;
+    public static javax.swing.JTable tablaAlumno;
     private javax.swing.JTable tablaMateria;
     // End of variables declaration//GEN-END:variables
 
-    private void mostrarDatosAlumno() {
+   private void mostrarDatosAlumno() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id Alumno");
         modelo.addColumn("DNI");
@@ -301,6 +380,7 @@ public class Principal extends javax.swing.JFrame {
                 data[0] = rs.getString(1);
                 data[1] = rs.getString(2);
                 data[2] = rs.getString(3);
+                data[3] = rs.getString(4);
 
                 modelo.addRow(data);
             }
