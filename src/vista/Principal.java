@@ -6,6 +6,7 @@
 package vista;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,6 +34,7 @@ public class Principal extends javax.swing.JFrame {
         mostrarDatosMateria();
         btnModificarAlumno.setVisible(false);
         btnModificarMateria.setVisible(false);
+        btnEliminar.setVisible(false);
     }
 
     /**
@@ -44,21 +46,20 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaMateria = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaAlumno = new javax.swing.JTable();
         btnRegistrarAlumno = new javax.swing.JButton();
         btnRegistrarMate = new javax.swing.JButton();
         btnInscripcion = new javax.swing.JButton();
         btnModificarAlumno = new javax.swing.JButton();
         btnModificarMateria = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaAlumno = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaMateria = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
+        jtIdMateria = new javax.swing.JTextField();
+        jtidAlumno = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,92 +67,10 @@ public class Principal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 51, 153));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        setMinimumSize(new java.awt.Dimension(1200, 800));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Registros"));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnRegistrarAlumno.setText("Registrar Alumno");
-        btnRegistrarAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarAlumnoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRegistrarAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 157, -1));
-
-        btnRegistrarMate.setText("Registrar Materia");
-        btnRegistrarMate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarMateActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRegistrarMate, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 157, -1));
-
-        btnInscripcion.setText("Registrar Inscripción");
-        btnInscripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInscripcionActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 157, -1));
-
-        btnModificarAlumno.setText("Modificar Alumno");
-        btnModificarAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarAlumnoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnModificarAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 140, -1));
-
-        btnModificarMateria.setText("Modificar Materia");
-        btnModificarMateria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarMateriaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnModificarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 140, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/OIP.jpg"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 280, 500));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 67, 300, 530));
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Alumnos")));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tablaAlumno.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tablaAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaAlumnoMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tablaAlumno);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 450, 240));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/759923-minimalism-black-background-digital-art-abstract.jpg"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 470, 250));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 67, 490, 290));
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Materias"));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tablaMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,20 +90,110 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaMateria);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 200));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, 430, 210));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/759923-minimalism-black-background-digital-art-abstract.jpg"))); // NOI18N
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 480, 210));
+        tablaAlumno.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaAlumnoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaAlumno);
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 496, 240));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 450, 210));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Walls_iPad_Pro_9.7_015.jpg"))); // NOI18N
+        btnRegistrarAlumno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        btnRegistrarAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/alumno.jpg"))); // NOI18N
+        btnRegistrarAlumno.setText("Registrar Alumno");
+        btnRegistrarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarAlumnoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegistrarAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 290, -1));
+
+        btnRegistrarMate.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarMate.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        btnRegistrarMate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/materia.jpg"))); // NOI18N
+        btnRegistrarMate.setText("Registrar Materia");
+        btnRegistrarMate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarMateActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegistrarMate, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 290, 60));
+
+        btnInscripcion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        btnInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/inscripcion.jpg"))); // NOI18N
+        btnInscripcion.setText(" Inscripción");
+        btnInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInscripcionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 290, 60));
+
+        btnModificarAlumno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        btnModificarAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar alumno.jpg"))); // NOI18N
+        btnModificarAlumno.setText("Modificar Alumno");
+        btnModificarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarAlumnoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnModificarAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 290, -1));
+
+        btnModificarMateria.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        btnModificarMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.jpg"))); // NOI18N
+        btnModificarMateria.setText("Modificar Materia");
+        btnModificarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarMateriaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnModificarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, 290, -1));
+
+        btnEliminar.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.jpg"))); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 290, 60));
+
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Alumnos");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Materias");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 410, -1, -1));
+        getContentPane().add(jtIdMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 670, 30, -1));
+        getContentPane().add(jtidAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 670, 30, -1));
+
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/PrincipalUniversidadEjemplo.jpg"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 6, 850, 610));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,14 +203,15 @@ public class Principal extends javax.swing.JFrame {
         Alumno alumno = new Alumno();
         alumno.setVisible(true);
         alumno.setLocationRelativeTo(null);
-        
+
+
     }//GEN-LAST:event_btnRegistrarAlumnoActionPerformed
 
     private void btnRegistrarMateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarMateActionPerformed
         Materia mat = new Materia();
         mat.setVisible(true);
         mat.setLocationRelativeTo(null);
-        
+
     }//GEN-LAST:event_btnRegistrarMateActionPerformed
 
     //Metodo para que al seleccionar una fila de la tabla se desabiliten los botones Registrar alumno
@@ -209,109 +219,154 @@ public class Principal extends javax.swing.JFrame {
     private void tablaAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAlumnoMouseClicked
         btnRegistrarAlumno.setEnabled(false);
         btnInscripcion.setEnabled(false);
-       
+
         btnRegistrarMate.setEnabled(false);
         btnModificarMateria.setVisible(false);
         btnModificarAlumno.setVisible(true);
+        btnEliminar.setVisible(true);
+
+        int filaAlumno = tablaAlumno.getSelectedRow();
+        this.jtidAlumno.setText((String) tablaAlumno.getValueAt(filaAlumno, 0));
+        this.jtIdMateria.setText("");
     }//GEN-LAST:event_tablaAlumnoMouseClicked
 
     //Metodo para modificar algun dato de la BD
     private void btnModificarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAlumnoActionPerformed
-       try{
-           
+        try {
 
-        //Guardo en una variable el numero de fila seleccionada
-        int fila = tablaAlumno.getSelectedRow();
-        // guardo en variables los valores que se encuantran en x fila y x columnas.
-        String id = (String) tablaAlumno.getValueAt(fila, 0);
-        String dni = (String) tablaAlumno.getValueAt(fila, 1);
-        String nombre = (String) tablaAlumno.getValueAt(fila, 2);
-        String apellido = (String) tablaAlumno.getValueAt(fila, 3);
+            //Guardo en una variable el numero de fila seleccionada
+            int fila = tablaAlumno.getSelectedRow();
+            // guardo en variables los valores que se encuantran en x fila y x columnas.
+            String id = (String) tablaAlumno.getValueAt(fila, 0);
+            String dni = (String) tablaAlumno.getValueAt(fila, 1);
+            String nombre = (String) tablaAlumno.getValueAt(fila, 2);
+            String apellido = (String) tablaAlumno.getValueAt(fila, 3);
 //        String fechaNac =(String) tablaAlumno.getValueAt(fila, 4);
-        String estado = (String) tablaAlumno.getValueAt(fila, 5);
-        //Instancio un formulario y lo hago visible
-        Alumno alumno = new Alumno();
-        alumno.setVisible(true);
-        alumno.setLocationRelativeTo(null);
-        alumno.btnRegistrar.setEnabled(false);
-        alumno.btnModificarAlumno.setEnabled(true);
-        //seteo los datos en los jtextfield de "Alumno"
-        alumno.txtID.setText(id);
-        alumno.txtDni.setText(dni);
-        alumno.txtNombre.setText(nombre);
-        alumno.txtApellido.setText(apellido);
+            String estado = (String) tablaAlumno.getValueAt(fila, 5);
+            //Instancio un formulario y lo hago visible
+            Alumno alumno = new Alumno();
+            alumno.setVisible(true);
+            alumno.setLocationRelativeTo(null);
+            alumno.btnRegistrar.setEnabled(false);
+            alumno.btnModificarAlumno.setEnabled(true);
+            //seteo los datos en los jtextfield de "Alumno"
+            alumno.txtID.setText(id);
+            alumno.txtDni.setText(dni);
+            alumno.txtNombre.setText(nombre);
+            alumno.txtApellido.setText(apellido);
 //        alumno.date.setDateFormatString(fechaNac);
-        alumno.txtEstado.setText(estado);
-        
-        
+            alumno.txtEstado.setText(estado);
+
 //        alumno.txtEstado.setText(estado);
-       }catch(Exception e){
-           JOptionPane.showMessageDialog(this,"error"+ e);
-           
-       }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "error" + e);
+
+        }
 
 
     }//GEN-LAST:event_btnModificarAlumnoActionPerformed
 
     private void btnInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscripcionActionPerformed
-        // TODO add your handling code here:
+        Inscripcion i = new Inscripcion();
+        i.setVisible(true);
+        i.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnInscripcionActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         btnModificarAlumno.setVisible(false);
         btnModificarMateria.setVisible(false);
+        btnEliminar.setVisible(false);
         btnRegistrarAlumno.setEnabled(true);
         btnRegistrarMate.setEnabled(true);
         btnInscripcion.setEnabled(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void tablaMateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMateriaMouseClicked
-         btnRegistrarAlumno.setEnabled(false);
+        btnRegistrarAlumno.setEnabled(false);
         btnRegistrarMate.setEnabled(false);
         btnInscripcion.setEnabled(false);
         btnModificarAlumno.setVisible(false);
         btnModificarMateria.setVisible(true);
-        
+        btnEliminar.setVisible(true);
+
+        int filaMateria = tablaMateria.getSelectedRow();
+
+        this.jtIdMateria.setText((String) tablaMateria.getValueAt(filaMateria, 0));
+        this.jtidAlumno.setText("");
+
     }//GEN-LAST:event_tablaMateriaMouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-          btnModificarAlumno.setVisible(false);
-        btnModificarMateria.setVisible(false);
-        btnRegistrarAlumno.setEnabled(true);
-        btnRegistrarMate.setEnabled(true);
-        btnInscripcion.setEnabled(true);
-    }//GEN-LAST:event_jLabel2MouseClicked
-
     private void btnModificarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarMateriaActionPerformed
-        
+
         int fila = tablaMateria.getSelectedRow();
-        
-        try{
-        String id = (String)tablaMateria.getValueAt(fila, 0);
-        String nombre = (String) tablaMateria.getValueAt(fila, 1);
-        String anio = (String) tablaMateria.getValueAt(fila, 2);
-        String estado = (String) tablaMateria.getValueAt(fila, 3);
-        
-        Materia mate = new Materia();
-        mate.setVisible(true);
-        mate.setLocationRelativeTo(null);
-        
-        mate.btnRegistrar.setVisible(false);
-        mate.btnModificar.setVisible(true);
-        
-        mate.txtID.setText(id);
-        mate.txtNombre.setText(nombre);
-        mate.txtAño.setText(anio);
-        mate.txtEstado.setText(estado);
-        
-        }catch(Exception e){
-            System.out.println(" error" +e);
+
+        try {
+            String id = (String) tablaMateria.getValueAt(fila, 0);
+            String nombre = (String) tablaMateria.getValueAt(fila, 1);
+            String anio = (String) tablaMateria.getValueAt(fila, 2);
+            String estado = (String) tablaMateria.getValueAt(fila, 3);
+
+            Materia mate = new Materia();
+            mate.setVisible(true);
+            mate.setLocationRelativeTo(null);
+
+            mate.btnRegistrar.setVisible(false);
+            mate.btnModificar.setVisible(true);
+
+            mate.txtID.setText(id);
+            mate.txtNombre.setText(nombre);
+            mate.txtAño.setText(anio);
+            mate.txtEstado.setText(estado);
+
+        } catch (Exception e) {
+            System.out.println(" error" + e);
+        }
+
+    }//GEN-LAST:event_btnModificarMateriaActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+
+        if (!this.jtidAlumno.getText().isEmpty()) {
+
+            if (JOptionPane.showConfirmDialog(null, "ESTA SEGURO DE ELIMINAR ALUMNO?", "SALIR", JOptionPane.YES_NO_CANCEL_OPTION) == 0) {
+                try {
+                    PreparedStatement ps = cn.prepareStatement("DELETE FROM alumno where idAlumno = '" + this.jtidAlumno.getText() + "'");
+                    int indice = ps.executeUpdate();
+                    if (indice > 0) {
+                        mostrarDatosAlumno();
+
+                    }
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(this, "error al eliminar datos");
+                }
+                JOptionPane.showMessageDialog(this, "Se elimino correctamente");
+
+            } 
         }
         
-    }//GEN-LAST:event_btnModificarMateriaActionPerformed
+            if (!this.jtIdMateria.getText().isEmpty()) {
+
+                if (JOptionPane.showConfirmDialog(null, "ESTA SEGURO DE ELIMINAR MATERIA?", "SALIR", JOptionPane.YES_NO_CANCEL_OPTION) == 0) {
+                    try {
+                        PreparedStatement ps = cn.prepareStatement("DELETE FROM materia where idMateria = '" + this.jtIdMateria.getText() + "'");
+                        int indice = ps.executeUpdate();
+                        if (indice > 0) {
+                            mostrarDatosMateria();
+
+                        }
+                    } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(this, "error al eliminar datos");
+                    }
+                    JOptionPane.showMessageDialog(this, "Se elimino correctamente");
+
+                }
+            }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInscripcion;
     public static javax.swing.JButton btnModificarAlumno;
     private javax.swing.JButton btnModificarMateria;
@@ -320,17 +375,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jtIdMateria;
+    private javax.swing.JTextField jtidAlumno;
     public static javax.swing.JTable tablaAlumno;
     private javax.swing.JTable tablaMateria;
     // End of variables declaration//GEN-END:variables
 
-   private void mostrarDatosAlumno() {
+    private void mostrarDatosAlumno() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id Alumno");
         modelo.addColumn("DNI");
